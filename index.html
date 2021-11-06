@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Алексей Кузьма – Государственный музей изобразительных искусств имени А.С.Пушкина</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <script>
+    const queries = window.location.search.replace('?', '').split('&');
+    for (let i = 0; i < queries.length; i += 1) {
+      const [type, value] = queries[i].split('=');
+      if (type === 'title') {
+        const currentTitle = document.title;
+        document.title = `${decodeURI(value)}. ${currentTitle}`;
+      } else if (type === 'lang') {
+        document.documentElement.setAttribute('lang', decodeURI(value));
+      }
+    }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-button button">Перейти к основному контенту</a>
+  <header class="header container" aria-label="Навигация">
+    <a href="/" title="На главную" class="header__logo">
+      <img src="./images/logo.png" alt="Логотип государственного музея изобразительных искусств имени А.С.Пушкина" aria-hidden="true" width="200" height="42">
+    </a>
+    <form tabindex="-1" action="/search" method="get" class="header-search js-header-search" role="search" aria-label="Поиск по сайту">
+      <span class="sr-only js-search-status" role="status" aria-live="polite"></span>
+      <input type="text" aria-label="Запрос" name="search" class="header-search__input js-search-input" autocapitalize="off" aria-controls="search-results" aria-haspopup="listbox" autocomplete="off">
+      <ul id="search-results" role="listbox" class="header-search__list js-search-results is-hidden" aria-label="Результаты"></ul>
+      <button class="header-search__button js-search-button" type="submit" tabindex="-1">
+        <span class="sr-only">Найти</span>
+      </button>
+    </form>
+    <div class="header-language" role="group" lang="en" aria-label="Change language">
+      <button class="button js-change-language js-change-language-ru" lang="ru" aria-label="Русский" disabled>RU</button>
+      <button class="button js-change-language js-change-language-en" lang="en" aria-label="English">EN</button>
+    </div>
+    <button class="header__login js-popup-button-login" aria-haspopup="dialog">
+      <span class="sr-only">Войти</span>
+      <svg focusable="false" role="presentation" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.672 22.158c3.044 0 5.68-1.091 7.834-3.246 2.154-2.153 3.246-4.789 3.246-7.833 0-3.044-1.092-5.68-3.246-7.834C28.352 1.092 25.716 0 22.672 0c-3.044 0-5.68 1.092-7.833 3.246-2.154 2.153-3.246 4.789-3.246 7.833 0 3.044 1.092 5.68 3.246 7.834 2.154 2.153 4.79 3.245 7.833 3.245ZM16.745 5.152c1.653-1.653 3.591-2.456 5.927-2.456 2.336 0 4.275.803 5.928 2.456 1.652 1.653 2.456 3.592 2.456 5.927 0 2.336-.803 4.274-2.456 5.927-1.653 1.653-3.592 2.457-5.928 2.457-2.335 0-4.274-.804-5.927-2.457-1.653-1.652-2.457-3.591-2.457-5.927 0-2.335.804-4.274 2.457-5.927ZM42.059 35.372a27.374 27.374 0 0 0-.373-2.907 22.915 22.915 0 0 0-.715-2.922 14.44 14.44 0 0 0-1.202-2.726 10.273 10.273 0 0 0-1.811-2.36c-.715-.684-1.59-1.235-2.602-1.636-1.009-.399-2.127-.6-3.323-.6-.47 0-.923.192-1.8.763-.54.352-1.171.759-1.876 1.21-.603.383-1.419.743-2.427 1.069a9.639 9.639 0 0 1-2.969.48 9.646 9.646 0 0 1-2.969-.48c-1.007-.326-1.824-.686-2.425-1.07a261.59 261.59 0 0 1-1.878-1.21c-.876-.57-1.33-.763-1.8-.763-1.196 0-2.313.202-3.321.602-1.012.4-1.888.95-2.603 1.635a10.277 10.277 0 0 0-1.811 2.36c-.5.88-.904 1.796-1.201 2.726a22.95 22.95 0 0 0-.715 2.922 27.18 27.18 0 0 0-.373 2.908 39.362 39.362 0 0 0-.092 2.716c0 2.401.764 4.345 2.269 5.779C7.529 45.283 9.495 46 11.888 46h22.15c2.39 0 4.358-.717 5.845-2.132 1.505-1.433 2.268-3.377 2.268-5.78 0-.926-.031-1.84-.093-2.716Zm-4.035 6.543c-.982.935-2.287 1.39-3.987 1.39h-22.15c-1.7 0-3.004-.455-3.986-1.39-.964-.917-1.432-2.169-1.432-3.826 0-.862.029-1.713.085-2.53.056-.801.17-1.682.337-2.618.166-.924.378-1.79.629-2.576.241-.753.57-1.498.978-2.216a7.619 7.619 0 0 1 1.33-1.745c.463-.442 1.046-.805 1.732-1.076a6.203 6.203 0 0 1 2.123-.41c.094.05.262.146.535.324.554.361 1.193.773 1.899 1.224.796.508 1.821.966 3.046 1.361 1.253.405 2.53.611 3.798.611a12.34 12.34 0 0 0 3.798-.61c1.226-.396 2.251-.854 3.048-1.363.723-.462 1.344-.862 1.898-1.223.272-.177.44-.274.535-.324.775.021 1.488.159 2.123.41.687.271 1.27.634 1.731 1.076.495.473.942 1.06 1.331 1.745.409.718.738 1.464.979 2.216.251.786.463 1.653.628 2.576.168.938.282 1.818.338 2.618v.001c.057.814.085 1.665.086 2.53 0 1.657-.469 2.908-1.432 3.825Z" fill="currentColor"/></svg>
+    </button>
+    <button class="button header__logout js-popup-button-logout is-hidden">Выйти</button>
+  </header>
+  <main id="main" class="container">
+    <h1 class="sr-only" id="main-title" tabindex="-1">Главная страница</h1>
+    
+    <nav aria-label="Основная" class="main-navigation">
+      <a href="#visitors-title" class="main-navigation__link">Посетителям</a>
+      <a href="#events-title" class="main-navigation__link">Выставки и события</a>
+      <a href="#museums-title" class="main-navigation__link">Музей</a>
+      <a href="#video-title" class="main-navigation__link">Онлайн-трансляции</a>
+    </nav>
+
+    <section aria-labelledby="visitors-title">
+      <div class="sr-only" role="heading" aria-level="2" id="visitors-title">Посетителям</div>
+      <article class="carousel" aria-roledescription="slide">
+        <div role="group" aria-label="Управление слайдером">
+          <button class="carousel__button carousel__button_prev">Предыдущий</button>
+          <button class="carousel__button carousel__button_next">Следущий</button>
+        </div>
+        <ul>
+          <li>
+            <img src="./images/carousel/slide-1.png" alt="">
+            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
+          </li>
+          <li>
+            <img src="./images/carousel/slide-1.png" alt="">
+            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
+          </li>
+          <li>
+            <img src="./images/carousel/slide-1.png" alt="">
+            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
+          </li>
+        </ul>
+      </article>
+
+      <nav aria-labelledby="visitors-title" class="sub-navigation">
+        <a href="/" class="button button_blue sub-navigation__button js-alert-link">Купить билет</a>
+        <a href="/" class="button button_blue sub-navigation__button js-alert-link">Стать другом</a>
+        <a href="/" class="button button_blue sub-navigation__button js-alert-link">Онлайн-магазин</a>
+      </nav>
+    </section>
+
+    <section aria-labelledby="events-title">
+      <h2 class="container__title" id="events-title">Выставки и события</h2>
+      <ul class="tabs js-events-tabs" role="tablist" aria-labelledby="events-title">
+        <li class="tab" role="presentation">
+          <button role="tab" aria-selected="true" aria-controls="events-list" class="tab__item is-active">Все</button>
+        </li>
+        <li class="tab" role="presentation">
+          <button role="tab" aria-selected="false" aria-controls="events-list" class="tab__item" tabindex="-1">Сегодня</button>
+        </li>
+        <li class="tab" role="presentation">
+          <button role="tab" aria-selected="false" aria-controls="events-list" class="tab__item" tabindex="-1">Завтра</button>
+        </li>
+      </ul>
+      <div id="events-list" aria-labelledby="events-title" role="tabpanel" tabindex="0">
+        <ul class="js-events-list cards" aria-labelledby="events-title"></ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="museums-title">
+      <h2 class="container__title" id="museums-title">Музей</h2>
+      <ul class="tabs js-museums-tabs" role="tablist" aria-labelledby="museums-title">
+        <li class="tab" role="presentation">
+          <button role="tab" id="museums-tab-list" aria-selected="true" aria-controls="museums-list" class="tab__item is-active">Здания</button>
+        </li>
+        <li class="tab" role="presentation">
+          <button role="tab" id="museums-tab-history" aria-selected="false" aria-controls="museums-history" class="tab__item" tabindex="-1">История</button>
+        </li>
+      </ul>
+      <div id="museums-list" aria-labelledby="museums-tab-list" role="tabpanel" tabindex="0">
+        <ul class="js-museums-list cards" aria-labelledby="museums-tab-list">
+          <li class="card">
+            <a class="card__href js-alert-link"
+               href="/museums/1"
+               aria-labelledby="card-museum-link-0 card-museum-title-0"
+               aria-describedby="card-museum-subtitle-0">
+              <img class="card__image" src="./images/museums/museum-1.png" alt="Изображение здания музея">
+              <h3 class="card__title" id="card-museum-title-0">МЕМОРИАЛЬНАЯ КВАРТИРА С.Т. РИХТЕРА</h3>
+              <address class="card__desc" id="card-museum-subtitle-0">ул. Большая Бронная, 2/6, 16 этаж, кв. 58</address>
+              <span class="card__link" id="card-museum-link-0" aria-label="Подробнее о здании">Подробнее</span>
+            </a>
+          </li>
+          <li class="card">
+            <a class="card__href js-alert-link"
+               href="/museums/2"
+               aria-labelledby="card-museum-link-1 card-museum-title-1"
+               aria-describedby="card-museum-subtitle-1">
+              <img class="card__image" src="./images/museums/museum-2.png" alt="Изображение здания музея">
+              <h3 class="card__title" id="card-museum-title-1">ЦЭВ «МУСЕЙОН»</h3>
+              <address class="card__desc" id="card-museum-subtitle-1">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</address>
+              <span class="card__link" id="card-museum-link-1" aria-label="Подробнее о здании">Подробнее</span>
+            </a>
+          </li>
+          <li class="card">
+            <a class="card__href js-alert-link"
+               href="/museums/3"
+               aria-labelledby="card-museum-link-2 card-museum-title-2"
+               aria-describedby="card-museum-subtitle-2">
+              <img class="card__image" src="./images/museums/museum-3.png" alt="Изображение здания музея">
+              <h3 class="card__title" id="card-museum-title-2">УСАДЬБА ЛОПУХИНЫХ</h3>
+              <address class="card__desc" id="card-museum-subtitle-2">Малый Знаменский пер., 3/5с4</address>
+              <span class="card__link" id="card-museum-link-2" aria-label="Подробнее о здании">Подробнее</span>
+            </a>
+          </li>
+          <li class="card">
+            <a class="card__href js-alert-link"
+               href="/museums/4"
+               aria-labelledby="card-museum-link-3 card-museum-title-3"
+               aria-describedby="card-museum-subtitle-3">
+              <img class="card__image" src="./images/museums/museum-4.png" alt="Изображение здания музея">
+              <h3 class="card__title" id="card-museum-title-3">УЧЕБНЫЙ МУЗЕЙ</h3>
+              <address class="card__desc" id="card-museum-subtitle-3">ул. Чаянова, 15</address>
+              <span class="card__link" id="card-museum-link-3" aria-label="Подробнее о здании">Подробнее</span>
+            </a>
+          </li>
+          <li class="card">
+            <a class="card__href js-alert-link"
+               href="/museums/5"
+               aria-labelledby="card-museum-link-4 card-museum-title-4"
+               aria-describedby="card-museum-subtitle-4">
+              <img class="card__image" src="./images/museums/museum-5.png" alt="Изображение здания музея">
+              <h3 class="card__title" id="card-museum-title-4">ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ</h3>
+              <address class="card__desc" id="card-museum-subtitle-4">ул. Волхонка, 10</address>
+              <span class="card__link" id="card-museum-link-4" aria-label="Подробнее о здании">Подробнее</span>
+            </a>
+          </li>
+          <li class="card">
+            <a class="card__href js-alert-link"
+               href="/museums/6"
+               aria-labelledby="card-museum-link-5 card-museum-title-5"
+               aria-describedby="card-museum-subtitle-5">
+              <img class="card__image" src="./images/museums/museum-6.png" alt="Изображение здания музея">
+              <h3 class="card__title" id="card-museum-title-5">ГАЛЕРЕЯ</h3>
+              <address class="card__desc" id="card-museum-subtitle-5">ул. Волхонка, 14</address>
+              <span class="card__link" id="card-museum-link-5" aria-label="Подробнее о здании">Подробнее</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="museums-history" aria-labelledby="museums-tab-history" role="tabpanel" class="is-hidden container__text container__text_black" tabindex="0">
+        <p>Государственный музей изобразительных искусств имени А.С. Пушкина&nbsp;&mdash; одно из&nbsp;крупнейших в&nbsp;России художественных собраний зарубежного искусства с&nbsp;древнейших времен до&nbsp;наших дней.</p>
+        <p>В&nbsp;современной экспозиции представлены обширная учебная коллекция тонированных гипсовых слепков с&nbsp;произведений Античности, Средних веков и&nbsp;эпохи Возрождения, а&nbsp;также собрание подлинных произведений живописи, скульптуры, графики и&nbsp;декоративно-прикладного искусства.</p>
+        <p>В&nbsp;залах первого этажа Главного здания представлены: произведения искусства Древнего Египта, Античности, собрание европейской живописи VIII&ndash;XVIII&nbsp;веков; два зала&nbsp;&mdash; Итальянский и&nbsp;Греческий дворики&nbsp;&mdash; занимают слепки. На&nbsp;втором этаже Главного здания в&nbsp;залах размещены слепки произведений искусства Древней Греции, Рима, Средних веков и&nbsp;Возрождения.</p>
+        <p>В&nbsp;начале 2017 года музей определил новое направление своей деятельности&nbsp;&mdash; Пушкинский XXI,&nbsp;&mdash; ориентированное на&nbsp;современное российское и&nbsp;западное искусство во&nbsp;всех аспектах&nbsp;&mdash; выставочном, образовательном и&nbsp;исследовательском. Таким образом, ГМИИ им. А.С. Пушкина представляет собой открытую, интерактивную сцену, демонстрирующую развитие мировой культуры с&nbsp;древности до&nbsp;наших дней, живое, знакомое с&nbsp;детства пространство для получения знаний и&nbsp;общения.</p>
+        <a href="/" class="js-alert-link">Читать далее<span class="sr-only">&nbsp;об истории музея</span></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="video-title">
+      <h2 class="container__title" id="video-title">Онлайн-трансляции</h2>
+      <div class="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Is9llfhJ5GA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section aria-labelledby="lectures-title">
+      <h3 class="container__title" id="lectures-title">Экскурсии и лекции в прямом эфире</h3>
+      <div class="container__text container__text_max">
+        <p>С&nbsp;1&nbsp;июля вы&nbsp;можете присоединиться к&nbsp;нашим виртуальным мероприятиям&nbsp;&mdash; экскурсиям и&nbsp;лекциям для взрослых и&nbsp;детей, оплатив участие на&nbsp;сайте. Встречи будут проходить в&nbsp;прямом эфире на&nbsp;платформе Zoom; предусмотрен формат живого общения с&nbsp;возможностью задавать вопросы экскурсоводу (лектору).<br>
+        <a href="/" class="js-alert-link">Подробнее.</a></p>
+        <p>Мы&nbsp;будем благодарны за&nbsp;любое <a href="/" class="js-alert-link">пожертвование</a>. Все поступившие средства будут направлены на&nbsp;организацию онлайн-проектов для наших посетителей.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__block">
+        <nav class="footer__nav" aria-label="Дополнительно">
+          <a href="/" class="footer__link js-alert-link">Посетителям с ограниченными возможностями</a>
+          <a href="/" class="footer__link js-alert-link">Билеты и льготы</a>
+          <a href="/" class="footer__link js-alert-link">Противодействие коррупции</a>
+        </nav>
+
+        <h2 class="footer__title" id="socials-title">Соц. сети</h2>
+        <nav class="footer__socials" aria-label="Социальные сети">
+          <a href="/" class="footer__icon js-alert-link" lang="en" title="Gmail">
+            <img src="./images/socials/gmail.svg" width="40" height="40" aria-hidden="true" alt="Gmail">
+          </a>
+          <a href="/" class="footer__icon js-alert-link" lang="en" title="Telegram">
+            <img src="./images/socials/telegram.svg" width="40" height="40" aria-hidden="true" alt="Telegram">
+          </a>
+          <a href="/" class="footer__icon js-alert-link" lang="en" title="Facebook">
+            <img src="./images/socials/facebook.svg" width="40" height="40" aria-hidden="true" alt="Facebook">
+          </a>
+        </nav>
+      </div>
+      <div class="footer__block">
+        <h2 class="footer__title" id="subscription-title">Подписка на новости</h2>
+        <form class="footer-form js-form-news">
+          <div class="footer-form__group">
+            <input class="footer-form__input" type="email" name="email" id="footer-email" aria-required="true" aria-describedby="error-email">
+            <span class="error-text is-hidden" id="error-email">Укажите почту</span>
+            <label class="footer-form__label" for="footer-email" lang="en" aria-hidden="true">Е-mail</label>
+          </div>
+          <div class="footer-form__group">
+            <div class="checkbox">
+              <input id="footer-personal" class="checkbox__input" type="checkbox" name="personal" aria-required="true" aria-describedby="error-personal">
+              <label class="checkbox__title" for="footer-personal">Согласен на обработку персональных данных</label>
+            </div>
+            <span class="error-text is-hidden" id="error-personal">Подтвердите согласие</span>
+          </div>
+          <button class="button button_blue footer__button js-form-submit-news" type="submit">Подписаться</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <div role="dialog" aria-modal="true" aria-labelledby="popup-title-login" class="popup js-popup-dialog-login is-hidden">
+    <div class="popup__container">
+      <h2 id="popup-title-login" class="popup__title js-popup-title-login">Вход</h2>
+      <form class="js-form-login">
+        <fieldset class="form-fieldset">
+          <div class="form-fieldset__group">
+            <label class="form-fieldset__label" for="form-login">Логин</label>
+            <div class="form-fieldset__subgroup">
+              <input id="form-login" type="text" name="login" class="form-fieldset__input" aria-required="true" aria-describedby="error-login">
+              <span class="error-text is-hidden" id="error-login">Укажите логин</span>
+            </div>
+          </div>
+          <div class="form-fieldset__group">
+            <label class="form-fieldset__label" for="form-password">Пароль</label>
+            <div class="form-fieldset__subgroup">
+              <input id="form-password" type="password" name="password" class="form-fieldset__input" aria-required="true" aria-describedby="error-password">
+              <span class="error-text is-hidden" id="error-password">Укажите пароль</span>
+            </div>
+          </div>
+        </fieldset>
+        <button class="button button_big js-form-submit-login" type="submit">Вход</button>
+      </form>
+      <button class="popup__close js-popup-close-login">
+        <span class="sr-only">Закрыть</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="alert-popup is-hidden js-alert-news" role="status" aria-live="polite">
+    Подписка на новости успешно оформлена
+  </div>
+
+  <script src="./js/index.js"></script>
+</body>
+</html>
