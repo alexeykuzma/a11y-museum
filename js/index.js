@@ -53,6 +53,23 @@ function main() {
     filledInput();
 }
 
+function setAlertLink(parent) {
+    let parentNode = document;
+    if (parent) parentNode = parent;
+    const falseLinks = parentNode.querySelectorAll('.js-alert-link');
+    const request = (event, link) => {
+        event.preventDefault();
+        const href = link.getAttribute('href');
+        const title = link.getAttribute('title') || link.innerText;
+        window.location = `${href}?title=${title}`;
+    }
+    for (let i = 0; i < falseLinks.length; i += 1) {
+        falseLinks[i].onclick = (event) => {
+            request(event, falseLinks[i]);
+        };
+    }
+}
+
 function loadEvents(index) {
     const params = [ 'all', 'today', 'tomorrow' ];
     let returnArray = eventsList;
@@ -89,7 +106,7 @@ function getEvents(list) {
         `;
     }
     document.querySelector('.js-events-list').innerHTML = returnTemplate;
-    setAlertLink();
+    setAlertLink(document.querySelector('.js-events-list'));
 }
 
 function filledInput() {
@@ -276,7 +293,7 @@ Search.prototype.getResultsList = (value, isPage, renderOnPage) => {
                 if (prefix) {
                     returnTemplate += `
                         <li class="${prefix}-search__result js-${prefix}-search-result">
-                            <a href="https://alexeykuzma.github.io/a11y-museum/${window.I18nPrefix}${link}">${name}</a>
+                            <a href="https://alexeykuzma.github.io/a11y-museum/${link}?title=${name}">${name}</a>
                         </li>
                     `;
                 } else {

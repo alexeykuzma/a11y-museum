@@ -13,7 +13,7 @@
     const queries = window.location.search.replace('?', '').split('&');
     for (let i = 0; i < queries.length; i += 1) {
       const [type, value] = queries[i].split('=');
-      if (type === 'search') {
+      if (type === 'title') {
         const currentTitle = document.title;
         document.title = `${decodeURI(value)}. ${currentTitle}`;
       } else if (type === 'lang') {
@@ -46,7 +46,7 @@
     </button>
     <button class="button header__logout js-popup-button-logout is-hidden">Выйти</button>
   </header>
-  <main id="main" class="container" aria-labelledby="results-title">
+  <main id="main" class="container" aria-labelledby="content-title">
     <nav aria-label="Основная" class="main-navigation">
       <a href="https://alexeykuzma.github.io/a11y-museum/#visitors-title" class="main-navigation__link">Посетителям</a>
       <a href="https://alexeykuzma.github.io/a11y-museum/#events-title" class="main-navigation__link">Выставки и события</a>
@@ -54,10 +54,7 @@
       <a href="https://alexeykuzma.github.io/a11y-museum/#video-title" class="main-navigation__link">Онлайн-трансляции</a>
     </nav>
 
-    <h1 class="container__title" id="results-title">Результаты поиска</h1>
-
-    <p class="page-search-status js-page-search-status"></p>
-    <ul class="page-search js-page-search-results"></ul>
+    <h1 class="container__title" id="content-title">Контент</h1>
 
   </main>
   <footer class="footer">
