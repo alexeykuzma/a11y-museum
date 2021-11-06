@@ -17,7 +17,7 @@ const debounce = (func, delay) => {
 const eventsList = [
     {
         name: 'Святослав Рихтер в кругу друзей. Москва — Коктебель',
-        link: '/events/1',
+        link: '/event',
         date: '2021-11-20',
         date_title: '20 ноября',
         img: './images/events/event-1.png',
@@ -25,7 +25,7 @@ const eventsList = [
     },
     {
         name: 'Тату',
-        link: '/events/2',
+        link: '/event',
         date: '2021-09-27',
         date_title: '27 сентября',
         img: './images/events/event-2.png',
@@ -33,7 +33,7 @@ const eventsList = [
     },
     {
         name: 'От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина',
-        link: '/events/3',
+        link: '/event',
         date: '2021-11-01',
         date_title: '1 ноября',
         img: './images/events/event-3.png',
@@ -51,22 +51,6 @@ function main() {
     }
     setAlertLink();
     filledInput();
-}
-
-function setAlertLink(parent) {
-    let parentNode = document;
-    if (parent) parentNode = parent;
-    const falseLinks = parentNode.querySelectorAll('.js-alert-link');
-    const request = (event, link) => {
-        event.preventDefault();
-        const title = link.getAttribute('title') || link.innerText;
-        window.location = `${window.I18nPrefix}/?title=Фальшивый переход на страницу: ${title}`;
-    }
-    for (let i = 0; i < falseLinks.length; i += 1) {
-        falseLinks[i].onclick = (event) => {
-            request(event, falseLinks[i]);
-        };
-    }
 }
 
 function loadEvents(index) {
@@ -92,7 +76,7 @@ function getEvents(list) {
         returnTemplate += `
             <li class="card">
                 <a class="card__href js-alert-link"
-                   href="${window.I18nPrefix}${link}"
+                   href="https://alexeykuzma.github.io/a11y-museum/${link}"
                    aria-labelledby="card-event-link-${i} card-event-title-${i}"
                    aria-describedby="card-event-subtitle-${i}">
                     <img class="card__image" src="${img}" alt="Изображение выставки или события">
@@ -172,7 +156,7 @@ Search.prototype.init = function init() {
                     for (let i = 0; i < resultsLinks.length; i += 1) {
                         resultsLinks[i].onclick = (event) => {
                             applySuggestion(resultsLinks, i);
-                            window.location = `${window.I18nPrefix}/search?search=${inputElement.value}`;
+                            window.location = `https://alexeykuzma.github.io/a11y-museum/search?search=${inputElement.value}`;
                         };
                     }
                 }, 500);
@@ -182,7 +166,7 @@ Search.prototype.init = function init() {
 
     document.querySelector('.js-search-button').onclick = (event) => {
         event.preventDefault();
-        if (inputElement.value !== '') window.location = `${window.I18nPrefix}/search?search=${inputElement.value}`;
+        if (inputElement.value !== '') window.location = `https://alexeykuzma.github.io/a11y-museum/search?search=${inputElement.value}`;
     };
 
     const highlightNextOption = (list) => {
@@ -292,7 +276,7 @@ Search.prototype.getResultsList = (value, isPage, renderOnPage) => {
                 if (prefix) {
                     returnTemplate += `
                         <li class="${prefix}-search__result js-${prefix}-search-result">
-                            <a href="${window.I18nPrefix}${link}">${name}</a>
+                            <a href="https://alexeykuzma.github.io/a11y-museum/${window.I18nPrefix}${link}">${name}</a>
                         </li>
                     `;
                 } else {
@@ -606,9 +590,7 @@ function ChangeLocale() {
 
 ChangeLocale.prototype.init = function init() {
     const that = this;
-    window.I18nPrefix = '';
     if (that.htmlLocale === 'en') {
-        window.I18nPrefix = '/en';
         that.updateContent('en');
         document.querySelector('.js-change-language-ru').removeAttribute('disabled');
         document.querySelector('.js-change-language-en').setAttribute('disabled', 'true');
