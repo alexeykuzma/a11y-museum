@@ -13,7 +13,8 @@ button:disabled {
   cursor: not-allowed;
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -31,13 +32,12 @@ h4 {
   --container-width: 57.334rem;
   --blue-color: #5D16D5;
   --blue-hover-color: #6d35cd;
-  --light-blue-color: #C7D2E9;
-  --light-blue-hover-color: #b8c3d9;
   --off-white-color: #F9F9FB;
   --white-color: #fff;
   --black-color: #000;
   --red-color: red;
   --dirty-white-color: #F1F1F1;
+  --disable-color: #d8d8d8;
 }
 
 .sr-only {
@@ -48,6 +48,7 @@ h4 {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+  user-select: none;
 }
 
 .is-hidden {
@@ -60,10 +61,17 @@ h4 {
   border-radius: 0.2rem;
   font-size: 1.2rem;
   padding: 0.8rem 1rem 0.7561rem;
-  background-color: var(--light-blue-color);
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  outline-offset: 0.25rem;
+  text-decoration: none;
 }
 .button:hover:not(:disabled) {
-  background-color: var(--light-blue-hover-color);
+  background-color: var(--blue-hover-color);
+}
+.button:disabled {
+  color: var(--black-color);
+  background-color: var(--disable-color);
 }
 .button_big {
   display: block;
@@ -71,14 +79,6 @@ h4 {
   font-size: 1.65rem;
   padding: 0.9rem 1rem 0.823rem;
   border-radius: 0.4rem;
-}
-.button_blue {
-  background-color: var(--blue-color);
-  color: var(--white-color);
-  outline-offset: 0.25rem;
-}
-.button_blue:hover:not(:disabled) {
-  background-color: var(--blue-hover-color);
 }
 
 .skip-button {
@@ -146,6 +146,7 @@ h4 {
   background-color: transparent;
   padding-left: 0;
   padding-right: 0;
+  color: var(--black-color);
 }
 .header__logout:hover {
   text-decoration: underline;
@@ -158,14 +159,16 @@ h4 {
 .header-search__input {
   background-color: var(--off-white-color);
   margin-right: 1rem;
-  border: 0.15rem solid var(--light-blue-color);
+  border: 0.15rem solid var(--black-color);
   width: 16.45rem;
   padding: 0.612rem 2.667rem 0.645rem 1.5rem;
   border-radius: 1.4rem;
   outline-offset: 0.1rem;
   box-sizing: border-box;
 }
-
+.header-search__input::placeholder {
+  color: var(--black-color);
+}
 .header-search__button {
   padding: 0;
   border: 0;
@@ -182,7 +185,7 @@ h4 {
 .header-search__list {
   position: absolute;
   background-color: var(--white-color);
-  border: 0.15rem solid var(--light-blue-color);
+  border: 0.15rem solid var(--black-color);
   top: 3rem;
   border-radius: 0.2rem;
   padding: 1rem 0;
@@ -197,12 +200,18 @@ h4 {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  cursor: pointer;
 }
 .header-search__result:hover {
   color: var(--blue-color);
 }
 .header-search__result.is-selected {
-  background-color: var(--off-white-color);
+  background-color: var(--blue-color);
+  color: var(--white-color);
+}
+.header-search__result.is-selected:hover {
+  color: var(--white-color);
+  background-color: var(--blue-hover-color);
 }
 .header-language {
   margin-right: 2.2rem;
@@ -264,7 +273,7 @@ h4 {
   margin-bottom: 1rem;
 }
 .form-fieldset__input {
-  border: 0.15rem solid var(--light-blue-color);
+  border: 0.15rem solid var(--black-color);
   font-size: 1.68rem;
   padding: 0.8rem 1rem 0.812rem 1.06rem;
   border-radius: 0.4rem;
@@ -331,9 +340,11 @@ h4 {
   text-decoration: none;
 }
 .tab__item.is-active {
-  background-color: var(--light-blue-color);
+  background-color: var(--blue-color);
   text-decoration: none;
-  color: var(--black-color);
+  color: var(--white-color);
+  outline-offset: 0.25rem;
+  cursor: default;
 }
 
 .cards {
@@ -343,12 +354,14 @@ h4 {
   grid-template-columns: repeat(auto-fill, minmax(12.8rem, 1fr));
   margin-bottom: 6.7rem;
 }
-.card__href {
+.card__href,
+.card__link {
   display: block;
   text-decoration: none;
   color: var(--black-color);
 }
-.card__href:hover .card__link {
+.card__href:hover .card__link,
+.card__link:hover {
   text-decoration: none;
 }
 .card__image {

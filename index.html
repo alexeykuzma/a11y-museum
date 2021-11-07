@@ -26,11 +26,11 @@
   <a href="#main" class="skip-button button">Перейти к основному контенту</a>
   <header class="header container" aria-label="Навигация">
     <a href="https://alexeykuzma.github.io/a11y-museum/" title="На главную" class="header__logo">
-      <img src="./images/logo.png" alt="Логотип государственного музея изобразительных искусств имени А.С.Пушкина" aria-hidden="true" width="200" height="42">
+      <img src="./images/logo.png" alt="На главную" aria-hidden="true" width="200" height="42">
     </a>
     <form tabindex="-1" action="https://alexeykuzma.github.io/a11y-museum/search" method="get" class="header-search js-header-search" role="search" aria-label="Поиск по сайту">
       <span class="sr-only js-search-status" role="status" aria-live="polite"></span>
-      <input type="text" aria-label="Запрос" name="search" class="header-search__input js-search-input" autocapitalize="off" aria-controls="search-results" aria-haspopup="listbox" autocomplete="off">
+      <input type="text" placeholder="Поиск" name="search" class="header-search__input js-search-input" autocapitalize="off" aria-controls="search-results" aria-haspopup="listbox" autocomplete="off">
       <ul id="search-results" role="listbox" class="header-search__list js-search-results is-hidden" aria-label="Результаты"></ul>
       <button class="header-search__button js-search-button" type="submit" tabindex="-1">
         <span class="sr-only">Найти</span>
@@ -58,31 +58,35 @@
 
     <section aria-labelledby="visitors-title">
       <div class="sr-only" role="heading" aria-level="2" id="visitors-title">Посетителям</div>
-      <article class="carousel" aria-roledescription="slide">
+      <!-- <section class="carousel" aria-label="Ближайшие выставки и события">
         <div role="group" aria-label="Управление слайдером">
-          <button class="carousel__button carousel__button_prev">Предыдущий</button>
-          <button class="carousel__button carousel__button_next">Следущий</button>
+          <button class="carousel__button carousel__button_prev" aria-controls="carousel-items">Предыдущий</button>
+          <button class="carousel__button carousel__button_next" aria-controls="carousel-items">Следущий</button>
         </div>
-        <ul>
-          <li>
+        <div aria-live="off" id="carousel-items">
+          <div role="group" aria-roledescription="slide" aria-label="1 из 4">
             <img src="./images/carousel/slide-1.png" alt="">
             <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </li>
-          <li>
+          </div>
+          <div role="group" aria-roledescription="slide" aria-label="2 из 4">
             <img src="./images/carousel/slide-1.png" alt="">
             <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </li>
-          <li>
+          </div>
+          <div role="group" aria-roledescription="slide" aria-label="3 из 4">
             <img src="./images/carousel/slide-1.png" alt="">
             <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </li>
-        </ul>
-      </article>
+          </div>
+          <div role="group" aria-roledescription="slide" aria-label="4 из 4">
+            <img src="./images/carousel/slide-1.png" alt="">
+            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
+          </div>
+        </div>
+      </section> -->
 
       <nav aria-labelledby="visitors-title" class="sub-navigation">
-        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button button_blue sub-navigation__button js-alert-link">Купить билет</a>
-        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button button_blue sub-navigation__button js-alert-link">Стать другом</a>
-        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button button_blue sub-navigation__button js-alert-link">Онлайн-магазин</a>
+        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button sub-navigation__button js-alert-link">Купить билет</a>
+        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button sub-navigation__button js-alert-link">Стать другом</a>
+        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button sub-navigation__button js-alert-link">Онлайн-магазин</a>
       </nav>
     </section>
 
@@ -100,7 +104,7 @@
         </li>
       </ul>
       <div id="events-list" aria-labelledby="events-title" role="tabpanel" tabindex="0">
-        <ul class="js-events-list cards" aria-labelledby="events-title"></ul>
+        <ol class="js-events-list cards" aria-labelledby="events-title"></ol>
       </div>
     </section>
 
@@ -121,10 +125,10 @@
                href="https://alexeykuzma.github.io/a11y-museum/museum"
                aria-labelledby="card-museum-link-0 card-museum-title-0"
                aria-describedby="card-museum-subtitle-0">
-              <img class="card__image" src="./images/museums/museum-1.png" alt="Изображение здания музея">
+              <img class="card__image" src="./images/museums/museum-1.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-0">МЕМОРИАЛЬНАЯ КВАРТИРА С.Т. РИХТЕРА</h3>
-              <address class="card__desc" id="card-museum-subtitle-0">ул. Большая Бронная, 2/6, 16 этаж, кв. 58</address>
-              <span class="card__link" id="card-museum-link-0" aria-label="Подробнее о здании">Подробнее</span>
+              <address class="card__desc" id="card-museum-subtitle-0"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Большая Бронная, 2/6, 16 этаж, <span aria-hidden="true">ка.</span><span class="sr-only">квартира</span> 58</address>
+              <span class="card__link" id="card-museum-link-0">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -132,10 +136,10 @@
                href="https://alexeykuzma.github.io/a11y-museum/museum"
                aria-labelledby="card-museum-link-1 card-museum-title-1"
                aria-describedby="card-museum-subtitle-1">
-              <img class="card__image" src="./images/museums/museum-2.png" alt="Изображение здания музея">
+              <img class="card__image" src="./images/museums/museum-2.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-1">ЦЭВ «МУСЕЙОН»</h3>
-              <address class="card__desc" id="card-museum-subtitle-1">Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</address>
-              <span class="card__link" id="card-museum-link-1" aria-label="Подробнее о здании">Подробнее</span>
+              <address class="card__desc" id="card-museum-subtitle-1">Колымажный <span aria-hidden="true">пер.</span><span class="sr-only">переулок</span>, 6/2, 3 (вход с Малого Знаменского переулка)</address>
+              <span class="card__link" id="card-museum-link-1">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -143,10 +147,10 @@
                href="https://alexeykuzma.github.io/a11y-museum/museum"
                aria-labelledby="card-museum-link-2 card-museum-title-2"
                aria-describedby="card-museum-subtitle-2">
-              <img class="card__image" src="./images/museums/museum-3.png" alt="Изображение здания музея">
+              <img class="card__image" src="./images/museums/museum-3.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-2">УСАДЬБА ЛОПУХИНЫХ</h3>
-              <address class="card__desc" id="card-museum-subtitle-2">Малый Знаменский пер., 3/5с4</address>
-              <span class="card__link" id="card-museum-link-2" aria-label="Подробнее о здании">Подробнее</span>
+              <address class="card__desc" id="card-museum-subtitle-2">Малый Знаменский <span aria-hidden="true">пер.</span><span class="sr-only">переулок</span>, 3/5<span aria-hidden="true">с</span><span class="sr-only"> строение</span>4</address>
+              <span class="card__link" id="card-museum-link-2">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -154,10 +158,10 @@
                href="https://alexeykuzma.github.io/a11y-museum/museum"
                aria-labelledby="card-museum-link-3 card-museum-title-3"
                aria-describedby="card-museum-subtitle-3">
-              <img class="card__image" src="./images/museums/museum-4.png" alt="Изображение здания музея">
+              <img class="card__image" src="./images/museums/museum-4.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-3">УЧЕБНЫЙ МУЗЕЙ</h3>
-              <address class="card__desc" id="card-museum-subtitle-3">ул. Чаянова, 15</address>
-              <span class="card__link" id="card-museum-link-3" aria-label="Подробнее о здании">Подробнее</span>
+              <address class="card__desc" id="card-museum-subtitle-3"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Чаянова, 15</address>
+              <span class="card__link" id="card-museum-link-3">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -165,10 +169,10 @@
                href="https://alexeykuzma.github.io/a11y-museum/museum"
                aria-labelledby="card-museum-link-4 card-museum-title-4"
                aria-describedby="card-museum-subtitle-4">
-              <img class="card__image" src="./images/museums/museum-5.png" alt="Изображение здания музея">
+              <img class="card__image" src="./images/museums/museum-5.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-4">ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ</h3>
-              <address class="card__desc" id="card-museum-subtitle-4">ул. Волхонка, 10</address>
-              <span class="card__link" id="card-museum-link-4" aria-label="Подробнее о здании">Подробнее</span>
+              <address class="card__desc" id="card-museum-subtitle-4"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Волхонка, 10</address>
+              <span class="card__link" id="card-museum-link-4">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -176,10 +180,10 @@
                href="https://alexeykuzma.github.io/a11y-museum/museum"
                aria-labelledby="card-museum-link-5 card-museum-title-5"
                aria-describedby="card-museum-subtitle-5">
-              <img class="card__image" src="./images/museums/museum-6.png" alt="Изображение здания музея">
+              <img class="card__image" src="./images/museums/museum-6.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-5">ГАЛЕРЕЯ</h3>
-              <address class="card__desc" id="card-museum-subtitle-5">ул. Волхонка, 14</address>
-              <span class="card__link" id="card-museum-link-5" aria-label="Подробнее о здании">Подробнее</span>
+              <address class="card__desc" id="card-museum-subtitle-5"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Волхонка, 14</address>
+              <span class="card__link" id="card-museum-link-5">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
         </ul>
@@ -196,17 +200,16 @@
     <section aria-labelledby="video-title">
       <h2 class="container__title" id="video-title">Онлайн-трансляции</h2>
       <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Is9llfhJ5GA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Is9llfhJ5GA" title="«Смотреть и видеть». Что за профессия — искусствовед?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-    </section>
-
-    <section aria-labelledby="lectures-title">
-      <h3 class="container__title" id="lectures-title">Экскурсии и лекции в прямом эфире</h3>
-      <div class="container__text container__text_max">
-        <p>С&nbsp;1&nbsp;июля вы&nbsp;можете присоединиться к&nbsp;нашим виртуальным мероприятиям&nbsp;&mdash; экскурсиям и&nbsp;лекциям для взрослых и&nbsp;детей, оплатив участие на&nbsp;сайте. Встречи будут проходить в&nbsp;прямом эфире на&nbsp;платформе Zoom; предусмотрен формат живого общения с&nbsp;возможностью задавать вопросы экскурсоводу (лектору).<br>
-        <a href="https://alexeykuzma.github.io/a11y-museum/content" class="js-alert-link">Подробнее.</a></p>
-        <p>Мы&nbsp;будем благодарны за&nbsp;любое <a href="https://alexeykuzma.github.io/a11y-museum/content" class="js-alert-link">пожертвование</a>. Все поступившие средства будут направлены на&nbsp;организацию онлайн-проектов для наших посетителей.</p>
-      </div>
+      <article aria-labelledby="lectures-title">
+        <h3 class="container__title" id="lectures-title">Экскурсии и лекции в прямом эфире</h3>
+        <div class="container__text container__text_max">
+          <p>С&nbsp;1&nbsp;июля вы&nbsp;можете присоединиться к&nbsp;нашим виртуальным мероприятиям&nbsp;&mdash; экскурсиям и&nbsp;лекциям для взрослых и&nbsp;детей, оплатив участие на&nbsp;сайте. Встречи будут проходить в&nbsp;прямом эфире на&nbsp;платформе Zoom; предусмотрен формат живого общения с&nbsp;возможностью задавать вопросы экскурсоводу (лектору).<br>
+          <a href="https://alexeykuzma.github.io/a11y-museum/content" class="js-alert-link">Подробнее.</a></p>
+          <p>Мы&nbsp;будем благодарны за&nbsp;любое <a href="https://alexeykuzma.github.io/a11y-museum/content" class="js-alert-link">пожертвование</a>. Все поступившие средства будут направлены на&nbsp;организацию онлайн-проектов для наших посетителей.</p>
+        </div>
+      </article>
     </section>
   </main>
   <footer class="footer">
@@ -220,13 +223,13 @@
 
         <h2 class="footer__title" id="socials-title">Соц. сети</h2>
         <nav class="footer__socials" aria-label="Социальные сети">
-          <a href="mailto:alexey.kuzma@outlook.com" target="_blank" class="footer__icon js-alert-link" lang="en" title="Gmail">
+          <a href="mailto:alexey.kuzma@outlook.com" rel="noreferrer" target="_blank" class="footer__icon js-alert-link" lang="en" title="Gmail">
             <img src="./images/socials/gmail.svg" width="40" height="40" aria-hidden="true" alt="Gmail">
           </a>
-          <a href="https://telegram.org/" target="_blank" class="footer__icon js-alert-link" lang="en" title="Telegram">
+          <a href="https://telegram.org/" rel="noreferrer" target="_blank" class="footer__icon js-alert-link" lang="en" title="Telegram">
             <img src="./images/socials/telegram.svg" width="40" height="40" aria-hidden="true" alt="Telegram">
           </a>
-          <a href="https://www.facebook.com/" target="_blank" class="footer__icon js-alert-link" lang="en" title="Facebook">
+          <a href="https://www.facebook.com/" rel="noreferrer" target="_blank" class="footer__icon js-alert-link" lang="en" title="Facebook">
             <img src="./images/socials/facebook.svg" width="40" height="40" aria-hidden="true" alt="Facebook">
           </a>
         </nav>
@@ -237,7 +240,7 @@
           <div class="footer-form__group">
             <input class="footer-form__input" type="email" name="email" id="footer-email" aria-required="true" aria-describedby="error-email">
             <span class="error-text is-hidden" id="error-email">Укажите почту</span>
-            <label class="footer-form__label" for="footer-email" lang="en" aria-hidden="true">Е-mail</label>
+            <label class="footer-form__label" for="footer-email" lang="en">Е-mail</label>
           </div>
           <div class="footer-form__group">
             <div class="checkbox">
@@ -246,7 +249,7 @@
             </div>
             <span class="error-text is-hidden" id="error-personal">Подтвердите согласие</span>
           </div>
-          <button class="button button_blue footer__button js-form-submit-news" type="submit">Подписаться</button>
+          <button class="button footer__button js-form-submit-news" type="submit">Подписаться</button>
         </form>
       </div>
     </div>

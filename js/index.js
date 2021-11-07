@@ -21,7 +21,8 @@ const eventsList = [
         date: '2021-11-20',
         date_title: '20 ноября',
         img: './images/events/event-1.png',
-        desc: 'Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст',
+        alt: 'Портрет женщины, сидящей на плетеном кресле с закрытым зонтом в руках',
+        desc: 'Камерная, но весьма содержательная выставка, посвященная «коктебельскому братству» — содружеству художников, поэтов, музыкантов, ученых, объединенных духом свободы и творчества.',
     },
     {
         name: 'Тату',
@@ -29,7 +30,8 @@ const eventsList = [
         date: '2021-09-27',
         date_title: '27 сентября',
         img: './images/events/event-2.png',
-        desc: 'Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст',
+        alt: 'Афиша выставки с деревянной маской коруру 19 века из Новой Зеландии с глазами-ракушками',
+        desc: 'Состав выставки - около 200 произведений: живопись, графика, фотография, скульптура, предметы традиционного и декоративно-прикладного искусства, архивные и этнографические материалы.',
     },
     {
         name: 'От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина',
@@ -37,7 +39,8 @@ const eventsList = [
         date: '2021-11-01',
         date_title: '1 ноября',
         img: './images/events/event-3.png',
-        desc: 'Текст о музее текст Текст о музее текст Текст о музее текст Текст о музее текст',
+        alt: 'Графический портрет молодой девушки, сидящей в тростниковом кресле с веткой олеандра в левой руке',
+        desc: 'Из богатого графического собрания музея отобраны лучшие образцы разных национальных школ – итальянской, французской, немецкой, голландской, фламандской и русской.',
     },
 ];
 
@@ -89,18 +92,20 @@ function changeMuseumsTab(index) {
 function getEvents(list) {
     let returnTemplate = '';
     for (let i = 0; i < list.length; i += 1) {
-        const { name, link, date, date_title, img, desc } = list[i];
+        const { name, link, date, date_title, img, alt, desc } = list[i];
         returnTemplate += `
             <li class="card">
-                <a class="card__href js-alert-link"
-                   href="https://alexeykuzma.github.io/a11y-museum/${link}"
-                   aria-labelledby="card-event-link-${i} card-event-title-${i}"
-                   aria-describedby="card-event-subtitle-${i}">
-                    <img class="card__image" src="${img}" alt="Изображение выставки или события">
+                <div role="group" aria-labelledby="card-event-title-${i}" aria-describedby="card-event-subtitle-${i}">
+                    <img class="card__image" src="${img}" alt="${alt}">
                     <h3 class="card__title" id="card-event-title-${i}">${name}</h3>
                     <span class="card__subtitle" id="card-event-subtitle-${i}">Выставка до ${date_title}</span>
                     <span class="card__desc">${desc}</span>
-                    <span class="card__link" id="card-event-link-${i}" aria-label="Купить билет на выставку">Купить билет</span>
+                </div>
+                <a href="https://alexeykuzma.github.io/a11y-museum${link}"
+                   class="card__href card__link"
+                   id="card-event-link-${i}"
+                   aria-labelledby="card-event-link-${i} card-event-title-${i}">
+                    Купить билет<span class="sr-only"> на выставку</span>
                 </a>
             </li>
         `;
@@ -293,7 +298,7 @@ Search.prototype.getResultsList = (value, isPage, renderOnPage) => {
                 if (prefix) {
                     returnTemplate += `
                         <li class="${prefix}-search__result js-${prefix}-search-result">
-                            <a href="https://alexeykuzma.github.io/a11y-museum/${link}?title=${name}">${name}</a>
+                            <a href="https://alexeykuzma.github.io/a11y-museum${link}?title=${name}">${name}</a>
                         </li>
                     `;
                 } else {
