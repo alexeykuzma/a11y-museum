@@ -140,6 +140,9 @@ img {
   margin-right: auto;
   margin-top: 0.3rem;
 }
+.header__logo img {
+  background-color: transparent;
+}
 .header__login {
   border: 0;
   background-color: transparent;
@@ -496,6 +499,9 @@ img {
   display: block;
   text-decoration: none;
   margin-right: 1.1rem;
+}
+.footer__icon img {
+  background-color: transparent;
 }
 .footer__icon:hover {
   opacity: 0.8;

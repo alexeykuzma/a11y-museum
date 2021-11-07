@@ -202,7 +202,7 @@ Search.prototype.init = function init() {
     const that = this;
     const inputElement = document.querySelector(that.input);
     const resultsList = document.querySelector('.js-search-results');
-    const isPage = window.location.pathname === '/search';
+    const isPage = window.location.pathname.includes('/search');
 
     inputElement.addEventListener('keydown', (event) => {
         const results = document.querySelector(that.results);
@@ -375,7 +375,17 @@ Search.prototype.getResultsList = (value, isPage, renderOnPage) => {
 
     if (count > 0) {
         if (!renderOnPage) results.classList.remove('is-hidden');
-        status.innerText = `Найдено – ${count}`;
+        const numberToString = (number, textArray) => {
+            const numberA = Math.abs(number) % 100;
+            const numberB = numberA % 10;
+            let returnText = textArray[2];
+            if ((numberB > 1 && numberB < 5) && (numberA < 11 || numberA > 14)) {
+                returnText = textArray[1];
+            }
+            if (numberB === 1 && numberA !== 11) returnText = textArray[0];
+            return `${number} ${returnText}`;
+        };
+        status.innerText = `Найдено – ${numberToString(count, ['результат', 'результата', 'результатов'])}`;
         results.innerHTML = returnTemplate;
     } else {
         if (!renderOnPage) results.classList.add('is-hidden');
