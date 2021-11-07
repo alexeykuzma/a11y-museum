@@ -14,6 +14,115 @@ const debounce = (func, delay) => {
   return funcName();
 };
 
+function ChangeLocale() {
+    this.htmlLocale = document.documentElement.getAttribute('lang');
+    this.button = '.js-change-language';
+    this.content = {
+        ru: {
+            title: document.title,
+            logo: 'На главную',
+            headers: {
+                main: 'Главная страница',
+                visitors: 'Посетителям',
+                events: 'Выставки и события',
+                museums: 'Музей',
+                video: 'Онлайн-трансляции',
+                lectures: 'Экскурсии и лекции в прямом эфире',
+                socials: 'Соц. сети',
+                subscription: 'Подписка на новости',
+            },
+            labels: {
+                header: 'Навигация',
+                'js-header-search': 'Поиск по сайту',
+                'js-search-input': 'Запрос',
+                'js-search-results': 'Результаты',
+                'main-navigation': 'Основная',
+            },
+            buttons: {
+                'skip-button': 'Перейти к основному контенту',
+                'js-search-button .sr-only': 'Найти',
+                'js-popup-button-login .sr-only': 'Войти',
+                'js-popup-button-logout': 'Выйти',
+            },
+        },
+        en: {
+            title: 'Aleksey Kuzma - The Pushkin Museum',
+            logo: 'To the main page',
+            headers: {
+                main: 'Main page',
+                visitors: 'For visitors',
+                events: 'Exhibitions and events',
+                museums: 'Museums',
+                video: 'Online broadcasts',
+                lectures: 'Media',
+                socials: 'The Museum in',
+                subscription: 'Subscription',
+            },
+            labels: {
+                header: 'Navigation',
+                'js-header-search': 'Search by site',
+                'js-search-input': 'Query',
+                'js-search-results': 'Results',
+                'main-navigation': 'Main',
+            },
+            buttons: {
+                'skip-button': 'Skip to main content',
+                'js-search-button .sr-only': 'Find',
+                'js-popup-button-login .sr-only': 'Log In',
+                'js-popup-button-logout': 'Log Out',
+            },
+        },
+    };
+}
+
+ChangeLocale.prototype.init = function init() {
+    const that = this;
+    if (that.htmlLocale === 'en') {
+        that.updateContent('en');
+        document.querySelector('.js-change-language-ru').removeAttribute('disabled');
+        document.querySelector('.js-change-language-en').setAttribute('disabled', 'true');
+    }
+    const buttons = document.querySelectorAll(that.button);
+    for (let i = 0; i < buttons.length; i += 1) {
+        const currentButton = buttons[i];
+        const newLocation = currentButton.getAttribute('lang');
+        currentButton.onclick = () => {
+            that.updateContent(newLocation);
+            const previousButton = document.querySelector(`${that.button}:disabled`);
+            previousButton.removeAttribute('disabled');
+            currentButton.setAttribute('disabled', 'true');
+            document.documentElement.setAttribute('lang', newLocation);
+            document.querySelector('h1').focus();
+        };
+    }
+}
+
+ChangeLocale.prototype.updateContent = function updateContent(lang) {
+    const that = this;
+    document.title = that.content[lang].title;
+    window.history.pushState({ lang }, that.content[lang].title, `?lang=${lang}`)
+    document.querySelector('.header__logo').setAttribute('title', that.content[lang].logo);
+    const headers = Object.entries(that.content[lang].headers);
+    for (let a = 0; a < headers.length; a += 1) {
+        const [key, value] = headers[a];
+        document.getElementById(`${key}-title`).innerText = value;
+        const link = document.querySelector(`[href="#${key}-title"]`);
+        if (link) link.innerText = value;
+    }
+    const labels = Object.entries(that.content[lang].labels);
+    for (let b = 0; b < labels.length; b += 1) {
+        const [key, value] = labels[b];
+        document.querySelector(`.${key}`).setAttribute('aria-label', value);
+    }
+    const buttons = Object.entries(that.content[lang].buttons);
+    for (let c = 0; c < buttons.length; c += 1) {
+        const [key, value] = buttons[c];
+        document.querySelector(`.${key}`).innerHTML = value;
+    }
+}
+
+new ChangeLocale().init();
+
 const eventsList = [
     {
         name: 'Святослав Рихтер в кругу друзей. Москва — Коктебель',
@@ -102,7 +211,7 @@ function getEvents(list) {
                     <span class="card__desc">${desc}</span>
                 </div>
                 <a href="https://alexeykuzma.github.io/a11y-museum${link}"
-                   class="card__href card__link"
+                   class="button button_small card__button"
                    id="card-event-link-${i}"
                    aria-labelledby="card-event-link-${i} card-event-title-${i}">
                     Купить билет<span class="sr-only"> на выставку</span>
@@ -549,115 +658,6 @@ Tabs.prototype.navigation = function navigation(event, scope, list, callback) {
     }
 }
 
-function ChangeLocale() {
-    this.htmlLocale = document.documentElement.getAttribute('lang');
-    this.button = '.js-change-language';
-    this.content = {
-        ru: {
-            title: document.title,
-            logo: 'На главную',
-            headers: {
-                main: 'Главная страница',
-                visitors: 'Посетителям',
-                events: 'Выставки и события',
-                museums: 'Музей',
-                video: 'Онлайн-трансляции',
-                lectures: 'Экскурсии и лекции в прямом эфире',
-                socials: 'Соц. сети',
-                subscription: 'Подписка на новости',
-            },
-            labels: {
-                header: 'Навигация',
-                'js-header-search': 'Поиск по сайту',
-                'js-search-input': 'Запрос',
-                'js-search-results': 'Результаты',
-                'main-navigation': 'Основная',
-            },
-            buttons: {
-                'skip-button': 'Перейти к основному контенту',
-                'js-search-button .sr-only': 'Найти',
-                'js-popup-button-login .sr-only': 'Войти',
-                'js-popup-button-logout': 'Выйти',
-            },
-        },
-        en: {
-            title: 'Aleksey Kuzma - The Pushkin Museum',
-            logo: 'To the main page',
-            headers: {
-                main: 'Main page',
-                visitors: 'For visitors',
-                events: 'Exhibitions and events',
-                museums: 'Museums',
-                video: 'Online broadcasts',
-                lectures: 'Media',
-                socials: 'The Museum in',
-                subscription: 'Subscription',
-            },
-            labels: {
-                header: 'Navigation',
-                'js-header-search': 'Search by site',
-                'js-search-input': 'Query',
-                'js-search-results': 'Results',
-                'main-navigation': 'Main',
-            },
-            buttons: {
-                'skip-button': 'Skip to main content',
-                'js-search-button .sr-only': 'Find',
-                'js-popup-button-login .sr-only': 'Log In',
-                'js-popup-button-logout': 'Log Out',
-            },
-        },
-    };
-}
-
-ChangeLocale.prototype.init = function init() {
-    const that = this;
-    if (that.htmlLocale === 'en') {
-        that.updateContent('en');
-        document.querySelector('.js-change-language-ru').removeAttribute('disabled');
-        document.querySelector('.js-change-language-en').setAttribute('disabled', 'true');
-    }
-    const buttons = document.querySelectorAll(that.button);
-    for (let i = 0; i < buttons.length; i += 1) {
-        const currentButton = buttons[i];
-        const newLocation = currentButton.getAttribute('lang');
-        currentButton.onclick = () => {
-            that.updateContent(newLocation);
-            const previousButton = document.querySelector(`${that.button}:disabled`);
-            previousButton.removeAttribute('disabled');
-            currentButton.setAttribute('disabled', 'true');
-            document.documentElement.setAttribute('lang', newLocation);
-            document.querySelector('h1').focus();
-        };
-    }
-}
-
-ChangeLocale.prototype.updateContent = function updateContent(lang) {
-    const that = this;
-    document.title = that.content[lang].title;
-    window.history.pushState({ lang }, that.content[lang].title, `?lang=${lang}`)
-    document.querySelector('.header__logo').setAttribute('title', that.content[lang].logo);
-    const headers = Object.entries(that.content[lang].headers);
-    for (let a = 0; a < headers.length; a += 1) {
-        const [key, value] = headers[a];
-        document.getElementById(`${key}-title`).innerText = value;
-        const link = document.querySelector(`[href="#${key}-title"]`);
-        if (link) link.innerText = value;
-    }
-    const labels = Object.entries(that.content[lang].labels);
-    for (let b = 0; b < labels.length; b += 1) {
-        const [key, value] = labels[b];
-        document.querySelector(`.${key}`).setAttribute('aria-label', value);
-    }
-    const buttons = Object.entries(that.content[lang].buttons);
-    for (let c = 0; c < buttons.length; c += 1) {
-        const [key, value] = buttons[c];
-        document.querySelector(`.${key}`).innerHTML = value;
-    }
-}
-
-new ChangeLocale().init();
-
 document.addEventListener('DOMContentLoaded', () => {
     main();
     search.init();
@@ -666,4 +666,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialogLogin = dialog.init('login');
     formLogin.init('login', 'popup', dialogLogin);
     formNews.init('news', 'news');
+    const swiper = new Swiper('.carousel', {
+        navigation: {
+            nextEl: '.carousel__button_next',
+            prevEl: '.carousel__button_prev',
+        },
+        a11y: {
+            enabled: false,
+        },
+        watchSlidesProgress: true,
+        on: {
+            init() {
+                const slides = Array.from(this.slides);
+                for (let i = 0; i < slides.length; i += 1) {
+                    const slide = slides[i].querySelector('.slide');
+                    if (!slides[i].classList.contains('swiper-slide-visible')) {
+                        slide.style.display = 'none';
+                    }
+                }
+            },
+            setTranslate() {
+                debounce(() => {
+                    const slides = Array.from(this.slides);
+                    for (let i = 0; i < slides.length; i += 1) {
+                        if (slides[i].classList.contains('swiper-slide-visible')) {
+                            slides[i].querySelector('.slide').style.display = '';
+                        }
+                    }
+                }, 50);
+            },
+            transitionEnd() {
+                const slides = Array.from(this.slides);
+                for (let i = 0; i < slides.length; i += 1) {
+                    if (!slides[i].classList.contains('swiper-slide-visible')) {
+                        slides[i].querySelector('.slide').style.display = 'none';
+                    }
+                }
+            },
+        },
+    });
 });

@@ -40,6 +40,10 @@ h4 {
   --disable-color: #d8d8d8;
 }
 
+img {
+  background-color: var(--disable-color);
+}
+
 .sr-only {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -79,6 +83,9 @@ h4 {
   font-size: 1.65rem;
   padding: 0.9rem 1rem 0.823rem;
   border-radius: 0.4rem;
+}
+.button_small {
+  font-size: 0.85rem;
 }
 
 .skip-button {
@@ -310,15 +317,62 @@ h4 {
 .sub-navigation {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 6.8rem;
+  margin-bottom: 6.667rem;
 }
 .sub-navigation__button {
   display: inline-block;
   text-decoration: none;
-  padding: 0.556rem 2.2rem 0.5rem;
+  padding: 0.5rem 2.222rem;
   font-size: 1.222rem;
-  margin-right: 2.2rem;
-  border-radius: 0.4rem;
+  margin-right: 2.222rem;
+  border-radius: 0.444rem;
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+.carousel {
+  margin-bottom: 2.667rem;
+}
+.carousel__button {
+  position: absolute;
+  top: 13.611rem;
+  width: 2.333rem;
+  height: 4.222rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+.carousel__button:disabled,
+.carousel__button:hover {
+  opacity: 0.6;
+}
+.carousel__button_prev {
+  left: -4.166rem;
+  background-image: url('data:image/svg+xml;utf8,<svg width="42" height="76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.385 35.915 36.48.82a2.924 2.924 0 0 1 4.135 4.135L7.588 37.982l33.026 33.026a2.924 2.924 0 0 1-4.135 4.136L1.385 40.05a2.924 2.924 0 0 1 0-4.135Z" fill="%23000"/></svg>');
+}
+.carousel__button_next {
+  right: -4.166rem;
+  background-image: url('data:image/svg+xml;utf8,<svg width="42" height="76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.615 40.085 5.52 75.18a2.924 2.924 0 0 1-4.135-4.135l33.026-33.026L1.386 4.992A2.924 2.924 0 0 1 5.52.856L40.615 35.95a2.924 2.924 0 0 1 0 4.135Z" fill="%23000"/></svg>');
+}
+.carousel__item {
+  min-height: 599px;
+  overflow: hidden;
+}
+.carousel__link {
+  position: absolute;
+  bottom: 4.667rem;
+  left: 2.556rem;
+  font-size: 1rem;
+  padding: 1rem 2.222rem;
+}
+.carousel__image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .tabs {
@@ -354,15 +408,14 @@ h4 {
   grid-template-columns: repeat(auto-fill, minmax(12.8rem, 1fr));
   margin-bottom: 6.7rem;
 }
-.card__href,
-.card__link {
+.card__href {
   display: block;
   text-decoration: none;
   color: var(--black-color);
 }
-.card__href:hover .card__link,
-.card__link:hover {
-  text-decoration: none;
+.card__href:hover .card__button,
+.card__button:hover {
+  background-color: var(--blue-hover-color);
 }
 .card__image {
   width: 100%;
@@ -387,9 +440,8 @@ h4 {
   margin-bottom: 1.3rem;
   font-style: normal;
 }
-.card__link {
-  font-size: 0.89rem;
-  text-decoration: underline;
+.card__button {
+  display: inline-block;
 }
 
 .video {

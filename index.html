@@ -7,8 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css"/>
   <script>
     const queries = window.location.search.replace('?', '').split('&');
     for (let i = 0; i < queries.length; i += 1) {
@@ -56,32 +57,59 @@
       <a href="#video-title" class="main-navigation__link">Онлайн-трансляции</a>
     </nav>
 
-    <section aria-labelledby="visitors-title">
+    <section aria-labelledby="visitors-title" class="carousel-wrapper">
       <div class="sr-only" role="heading" aria-level="2" id="visitors-title">Посетителям</div>
-      <!-- <section class="carousel" aria-label="Ближайшие выставки и события">
-        <div role="group" aria-label="Управление слайдером">
-          <button class="carousel__button carousel__button_prev" aria-controls="carousel-items">Предыдущий</button>
-          <button class="carousel__button carousel__button_next" aria-controls="carousel-items">Следущий</button>
+      <div role="group" aria-label="Управление слайдером">
+        <button class="carousel__button carousel__button_prev" aria-controls="carousel-items">
+          <span class="sr-only">Предыдущий слайд</span>
+        </button>
+        <button class="carousel__button carousel__button_next" aria-controls="carousel-items">
+          <span class="sr-only">Следующий слайд</span>
+        </button>
+      </div>
+      <section class="swiper carousel" aria-label="Ближайшие выставки и события" aria-roledescription="carousel">
+        <div id="carousel-items" class="swiper-wrapper carousel__items js-carousel-items">
+          <div aria-live="polite" role="group"
+               class="swiper-slide carousel__item"
+               aria-roledescription="slide"
+               aria-label="1 из 3">
+            <div class="slide">
+              <a class="carousel__link button"
+                 href="https://alexeykuzma.github.io/a11y-museum/event"
+                 id="carousel-link-0"
+                 aria-labelledby="carousel-link-0 carousel-title-0">Билеты онлайн<span class="sr-only"> на выставку</span></a>
+              <img src="./images/carousel/slide-0.jpeg" alt="Афиша с изображением картины Динамизм велосипедиста" longdesc="Полотно относится к серии работ художника, которые основываются на пластикодинамической абстракции, изображающей движение тела в пространстве. В ней нашло отображение представление художника о пространственно-временных отношениях в динамике. Автор расщепляет изображение на отдельные пласты, чем достигает особого эффекта, передающего движение. Используемые им агрессивные и чистые цвета, а также поток света и вкрапления чёрного цвета в композиции, создают ощущение последовательности моментов, усиливающих динамическое плетение, чем также достигается ощущение движения, будто перед зрителем изображён настоящий велосипедист, который движется быстро." class="carousel__image">
+              <span class="sr-only" aria-hidden="true" id="carousel-title-0">Свободное искусство. С 19 октября 2021 года по 16 января 2022 года</span>
+            </div>
+          </div>
+          <div aria-live="polite" role="group"
+               class="swiper-slide carousel__item"
+               aria-roledescription="slide"
+               aria-label="2 из 3">
+            <div class="slide">
+              <a class="carousel__link button"
+                 href="https://alexeykuzma.github.io/a11y-museum/event"
+                 id="carousel-link-1"
+                 aria-labelledby="carousel-link-1 carousel-title-1">Билеты онлайн<span class="sr-only"> на выставку</span></a>
+              <img src="./images/carousel/slide-1.jpeg" alt="Афиша с изображением входной группы Академии Пушкинского" class="carousel__image">
+              <span class="sr-only" aria-hidden="true" id="carousel-title-1">Знаки и жесты: как читать средневековые изображения. С 18 октября</span>
+            </div>
+          </div>
+          <div aria-live="polite" role="group"
+               class="swiper-slide carousel__item"
+               aria-roledescription="slide"
+               aria-label="3 из 3">
+            <div class="slide">
+              <a class="carousel__link button"
+                 href="https://alexeykuzma.github.io/a11y-museum/event"
+                 id="carousel-link-2"
+                 aria-labelledby="carousel-link-2 carousel-title-2">Билеты онлайн<span class="sr-only"> на выставку</span></a>
+              <img src="./images/carousel/slide-2.jpeg" alt="Афиша с изображением невозможной фигуры куба с зелёной рамкой на серном фоне" class="carousel__image">
+              <span class="sr-only" aria-hidden="true" id="carousel-title-2">Взгляд за пределы музея. С 27 октября по 24 ноября</span>
+            </div>
+          </div>
         </div>
-        <div aria-live="off" id="carousel-items">
-          <div role="group" aria-roledescription="slide" aria-label="1 из 4">
-            <img src="./images/carousel/slide-1.png" alt="">
-            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </div>
-          <div role="group" aria-roledescription="slide" aria-label="2 из 4">
-            <img src="./images/carousel/slide-1.png" alt="">
-            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </div>
-          <div role="group" aria-roledescription="slide" aria-label="3 из 4">
-            <img src="./images/carousel/slide-1.png" alt="">
-            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </div>
-          <div role="group" aria-roledescription="slide" aria-label="4 из 4">
-            <img src="./images/carousel/slide-1.png" alt="">
-            <a href="#" aria-label="Купить билеты на выставку 'От Дюрера до Матисса'">Билеты онлайн</a>
-          </div>
-        </div>
-      </section> -->
+      </section>
 
       <nav aria-labelledby="visitors-title" class="sub-navigation">
         <a href="https://alexeykuzma.github.io/a11y-museum/content" class="button sub-navigation__button js-alert-link">Купить билет</a>
@@ -128,7 +156,7 @@
               <img class="card__image" src="./images/museums/museum-1.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-0">МЕМОРИАЛЬНАЯ КВАРТИРА С.Т. РИХТЕРА</h3>
               <address class="card__desc" id="card-museum-subtitle-0"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Большая Бронная, 2/6, 16 этаж, <span aria-hidden="true">ка.</span><span class="sr-only">квартира</span> 58</address>
-              <span class="card__link" id="card-museum-link-0">Подробнее<span class="sr-only"> о здании</span></span>
+              <span class="button button_small card__button" id="card-museum-link-0">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -139,7 +167,7 @@
               <img class="card__image" src="./images/museums/museum-2.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-1">ЦЭВ «МУСЕЙОН»</h3>
               <address class="card__desc" id="card-museum-subtitle-1">Колымажный <span aria-hidden="true">пер.</span><span class="sr-only">переулок</span>, 6/2, 3 (вход с Малого Знаменского переулка)</address>
-              <span class="card__link" id="card-museum-link-1">Подробнее<span class="sr-only"> о здании</span></span>
+              <span class="button button_small card__button" id="card-museum-link-1">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -150,7 +178,7 @@
               <img class="card__image" src="./images/museums/museum-3.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-2">УСАДЬБА ЛОПУХИНЫХ</h3>
               <address class="card__desc" id="card-museum-subtitle-2">Малый Знаменский <span aria-hidden="true">пер.</span><span class="sr-only">переулок</span>, 3/5<span aria-hidden="true">с</span><span class="sr-only"> строение</span>4</address>
-              <span class="card__link" id="card-museum-link-2">Подробнее<span class="sr-only"> о здании</span></span>
+              <span class="button button_small card__button" id="card-museum-link-2">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -161,7 +189,7 @@
               <img class="card__image" src="./images/museums/museum-4.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-3">УЧЕБНЫЙ МУЗЕЙ</h3>
               <address class="card__desc" id="card-museum-subtitle-3"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Чаянова, 15</address>
-              <span class="card__link" id="card-museum-link-3">Подробнее<span class="sr-only"> о здании</span></span>
+              <span class="button button_small card__button" id="card-museum-link-3">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -172,7 +200,7 @@
               <img class="card__image" src="./images/museums/museum-5.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-4">ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ</h3>
               <address class="card__desc" id="card-museum-subtitle-4"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Волхонка, 10</address>
-              <span class="card__link" id="card-museum-link-4">Подробнее<span class="sr-only"> о здании</span></span>
+              <span class="button button_small card__button" id="card-museum-link-4">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
           <li class="card">
@@ -183,7 +211,7 @@
               <img class="card__image" src="./images/museums/museum-6.png" alt="Изображение здания музея" aria-hidden="true">
               <h3 class="card__title" id="card-museum-title-5">ГАЛЕРЕЯ</h3>
               <address class="card__desc" id="card-museum-subtitle-5"><span aria-hidden="true">ул.</span><span class="sr-only">улица</span> Волхонка, 14</address>
-              <span class="card__link" id="card-museum-link-5">Подробнее<span class="sr-only"> о здании</span></span>
+              <span class="button button_small card__button" id="card-museum-link-5">Подробнее<span class="sr-only"> о здании</span></span>
             </a>
           </li>
         </ul>
@@ -287,6 +315,7 @@
     Подписка на новости успешно оформлена
   </div>
 
+  <script src="./js/swiper-bundle.min.js"></script>
   <script src="./js/index.js"></script>
 </body>
 </html>
