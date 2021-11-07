@@ -308,27 +308,27 @@ Search.prototype.getResultsList = (value, isPage, renderOnPage) => {
         museumsList = [
             {
                 name: 'МЕМОРИАЛЬНАЯ КВАРТИРА С.Т. РИХТЕРА',
-                link: '/museums/1',
+                link: '/museum',
             },
             {
                 name: 'ЦЭВ «МУСЕЙОН»',
-                link: '/museums/2',
+                link: '/museum',
             },
             {
                 name: 'УСАДЬБА ЛОПУХИНЫХ',
-                link: '/museums/3',
+                link: '/museum',
             },
             {
                 name: 'УЧЕБНЫЙ МУЗЕЙ',
-                link: '/museums/4',
+                link: '/museum',
             },
             {
                 name: 'ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ',
-                link: '/museums/5',
+                link: '/museum',
             },
             {
                 name: 'ГАЛЕРЕЯ',
-                link: '/museums/6',
+                link: '/museum',
             },
         ];
     } else {
