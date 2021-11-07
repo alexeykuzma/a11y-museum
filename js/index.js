@@ -105,19 +105,22 @@ ChangeLocale.prototype.updateContent = function updateContent(lang) {
     const headers = Object.entries(that.content[lang].headers);
     for (let a = 0; a < headers.length; a += 1) {
         const [key, value] = headers[a];
-        document.getElementById(`${key}-title`).innerText = value;
+        const title = document.getElementById(`${key}-title`);
+        if (title) title.innerText = value;
         const link = document.querySelector(`[href="#${key}-title"]`);
         if (link) link.innerText = value;
     }
     const labels = Object.entries(that.content[lang].labels);
     for (let b = 0; b < labels.length; b += 1) {
         const [key, value] = labels[b];
-        document.querySelector(`.${key}`).setAttribute('aria-label', value);
+        const labelElement = document.querySelector(`.${key}`);
+        if (labelElement) labelElement.setAttribute('aria-label', value);
     }
     const buttons = Object.entries(that.content[lang].buttons);
     for (let c = 0; c < buttons.length; c += 1) {
         const [key, value] = buttons[c];
-        document.querySelector(`.${key}`).innerHTML = value;
+        const buttonElement = document.querySelector(`.${key}`);
+        buttonElement.innerHTML = value;
     }
 }
 
