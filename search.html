@@ -26,11 +26,11 @@
   <a href="#main" class="skip-button button">Перейти к основному контенту</a>
   <header class="header container" aria-label="Навигация">
     <a href="https://alexeykuzma.github.io/a11y-museum/" title="На главную" class="header__logo">
-      <img src="./images/logo.png" alt="Логотип государственного музея изобразительных искусств имени А.С.Пушкина" aria-hidden="true" width="200" height="42">
+      <img src="./images/logo.png" alt="На главную" aria-hidden="true" width="200" height="42">
     </a>
     <form tabindex="-1" action="https://alexeykuzma.github.io/a11y-museum/search" method="get" class="header-search js-header-search" role="search" aria-label="Поиск по сайту">
       <span class="sr-only js-search-status" role="status" aria-live="polite"></span>
-      <input type="text" aria-label="Запрос" name="search" class="header-search__input js-search-input" autocapitalize="off" aria-controls="search-results" aria-haspopup="listbox" autocomplete="off">
+      <input type="text" placeholder="Поиск" name="search" class="header-search__input js-search-input" autocapitalize="off" aria-controls="search-results" aria-haspopup="listbox" autocomplete="off">
       <ul id="search-results" role="listbox" class="header-search__list js-search-results is-hidden" aria-label="Результаты"></ul>
       <button class="header-search__button js-search-button" type="submit" tabindex="-1">
         <span class="sr-only">Найти</span>
@@ -71,13 +71,13 @@
 
         <h2 class="footer__title" id="socials-title">Соц. сети</h2>
         <nav class="footer__socials" aria-label="Социальные сети">
-          <a href="mailto:alexey.kuzma@outlook.com" class="footer__icon js-alert-link" lang="en" title="Gmail">
+          <a href="mailto:alexey.kuzma@outlook.com" rel="noreferrer" target="_blank" class="footer__icon js-alert-link" lang="en" title="Gmail">
             <img src="./images/socials/gmail.svg" width="40" height="40" aria-hidden="true" alt="Gmail">
           </a>
-          <a href="https://telegram.org/" class="footer__icon js-alert-link" lang="en" title="Telegram">
+          <a href="https://telegram.org/" rel="noreferrer" target="_blank" class="footer__icon js-alert-link" lang="en" title="Telegram">
             <img src="./images/socials/telegram.svg" width="40" height="40" aria-hidden="true" alt="Telegram">
           </a>
-          <a href="https://www.facebook.com/" class="footer__icon js-alert-link" lang="en" title="Facebook">
+          <a href="https://www.facebook.com/" rel="noreferrer" target="_blank" class="footer__icon js-alert-link" lang="en" title="Facebook">
             <img src="./images/socials/facebook.svg" width="40" height="40" aria-hidden="true" alt="Facebook">
           </a>
         </nav>
@@ -88,7 +88,7 @@
           <div class="footer-form__group">
             <input class="footer-form__input" type="email" name="email" id="footer-email" aria-required="true" aria-describedby="error-email">
             <span class="error-text is-hidden" id="error-email">Укажите почту</span>
-            <label class="footer-form__label" for="footer-email" lang="en" aria-hidden="true">Е-mail</label>
+            <label class="footer-form__label" for="footer-email" lang="en">Е-mail</label>
           </div>
           <div class="footer-form__group">
             <div class="checkbox">
@@ -97,7 +97,7 @@
             </div>
             <span class="error-text is-hidden" id="error-personal">Подтвердите согласие</span>
           </div>
-          <button class="button button_blue footer__button js-form-submit-news" type="submit">Подписаться</button>
+          <button class="button footer__button js-form-submit-news" type="submit">Подписаться</button>
         </form>
       </div>
     </div>
