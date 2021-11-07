@@ -157,6 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             },
+            slideChangeTransitionStart() {
+                if (this.isEnd || this.isBeginning) {
+                    document.querySelector('.carousel__button:not(:disabled)').focus();
+                }
+            },
         },
     });
 });

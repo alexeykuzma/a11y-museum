@@ -537,6 +537,7 @@ FormSubmit.prototype.validate = function validate(data, actionType, popupScope) 
                 alertElement.classList.remove('is-hidden');
                 document.querySelector('.js-form-news').reset();
                 document.querySelector('.footer-form__group').classList.remove('is-filled');
+                document.querySelector(that.button).focus();
                 setTimeout(() => {
                     alertElement.classList.add('is-hidden');
                 }, 6000);
